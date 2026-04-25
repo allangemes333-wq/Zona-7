@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zona 7</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+
+/* FUNDO */
+body{
+font-family:'Poppins',sans-serif;
+background: linear-gradient(270deg,#050505,#111,#050505);
+background-size:600% 600%;
+animation:gradientMove 15s ease infinite;
+color:#fff;
+overflow-x:hidden;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle,#ffffff15 1px,transparent 1px),
+radial-gradient(circle,#ffffff08 1px,transparent 1px);
+background-size:50px 50px, 80px 80px;
+animation:moveBg 40s linear infinite;
+z-index:-1;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background: radial-gradient(circle at center,#ffffff08,transparent 70%);
+z-index:-1;
+}
+
+@keyframes moveBg{
+0%{transform:translate(0,0)}
+100%{transform:translate(-200px,-200px)}
+}
+
+/* layout */
+.container{
+max-width:1400px;
+margin:auto;
+width:100%;
+}
+
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:60px 20px;
+text-align:center;
+}
+
+/* 🔥 LOGO */
+.logo{
+width:200px;
+margin-bottom:20px;
+animation:fadeDown 0.6s ease, glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{filter:drop-shadow(0 0 10px #fff)}
+to{filter:drop-shadow(0 0 30px #aaa)}
+}
+
+h1{font-size:3.5rem;margin-bottom:10px}
+p{color:#bbb;max-width:700px}
+
+/* botão */
+.btn{
+margin-top:20px;
+padding:16px 40px;
+background:linear-gradient(90deg,#aaa,#fff);
+color:#000;
+border-radius:10px;
+border:none;
+font-weight:600;
+cursor:pointer;
+transition:.25s;
+box-shadow:0 0 20px #ffffff30;
+}
+
+.btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 40px #ffffff80;
+}
+
+.btn:active{
+transform:scale(0.96);
+box-shadow:0 0 60px #ffffff, 0 0 120px #ffffff80;
+}
+
+/* DESCRIÇÃO */
+.desc{
+margin-top:25px;
+max-width:900px;
+font-size:1.25rem;
+font-weight:700;
+line-height:1.6;
+color:#ffffff;
+opacity:0.95;
+text-shadow:0 0 20px rgba(255,255,255,0.15);
+}
+
+/* grid */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+max-width:1200px;
+width:100%;
+margin-top:50px;
+}
+
+.card{
+background:#111;
+padding:30px;
+border-radius:15px;
+border:1px solid #ffffff10;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 0 30px #ffffff30;
+}
+
+/* reviews */
+.reviews-carousel{
+overflow:hidden;
+max-width:1200px;
+margin-top:50px;
+}
+
+.review-track{
+display:flex;
+gap:25px;
+animation:scrollReviews 18s linear infinite;
+}
+
+@keyframes scrollReviews{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+.review-card{
+min-width:320px;
+background:#111;
+padding:25px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 0 25px #000;
+transition:.3s;
+}
+
+.review-card:hover{
+transform:scale(1.05);
+}
+
+.review-card img{
+width:80px;
+height:80px;
+border-radius:50%;
+margin-bottom:10px;
+border:2px solid #fff;
+}
+
+.stars{color:#f1c40f;letter-spacing:3px;margin:5px 0;}
+
+/* histórico */
+.sales{
+max-width:900px;
+width:100%;
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-top:30px;
+}
+
+.sale{
+background:#111;
+padding:15px;
+border-radius:10px;
+display:flex;
+justify-content:space-between;
+font-size:.95rem;
+}
+
+/* floating */
+.floating-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+padding:16px 24px;
+background:#fff;
+color:#000;
+border-radius:12px;
+font-weight:600;
+text-decoration:none;
+box-shadow:0 0 25px #fff;
+z-index:999;
+}
+
+footer{padding:40px;color:#777}
+
+/* reveal */
+.reveal{
+opacity:0;
+transform:translateY(40px) scale(0.98);
+filter:blur(6px);
+transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0) scale(1);
+filter:blur(0);
+}
+</style>
+</head>
+
+<body>
+
+<section class="container reveal">
+
+<!-- 🔥 LOGO ORIGINAL (NÃO MEXER) -->
+<img src="logo.png" class="logo">
+
+<h1>ZONA 7</h1>
+
+<p>Os melhores serviços digitais com preços absurdamente baixos</p>
+
+<button class="btn" onclick="scrollSlow()">EXPLORAR ↓</button>
+
+<div class="desc">
+A Zona 7 nasceu para entregar acesso rápido a serviços digitais funcionais, estáveis e com preço justo.
+</div>
+
+</section>
+
+<section class="container reveal">
+<h1>AVALIAÇÕES DOS CLIENTES</h1>
+
+<div class="reviews-carousel">
+<div class="review-track">
+
+<div class="review-card reveal"><img src="https://cdn.discordapp.com/embed/avatars/1.png"><h3>yurizxy.21 ✔</h3><p class="stars">★★★★★</p><p>"chegou rapido dms slk 🔥"</p></div>
+<div class="review-card reveal"><img src="https://cdn.discordapp.com/embed/avatars/2.png"><h3>ana.cxsz ✔</h3><p class="stars">★★★★★</p><p>"barato demais kkkkk valeu mt"</p></div>
+<div class="review-card reveal"><img src="https://cdn.discordapp.com/embed/avatars/3.png"><h3>pedrin_777 ✔</h3><p class="stars">★★★★★</p><p>"funcionou suave vou pegar dnv"</p></div>
+<div class="review-card reveal"><img src="https://cdn.discordapp.com/embed/avatars/4.png"><h3>rafael.xp ✔</h3><p class="stars">★★★★★</p><p>"top dms 🔥🔥 recomendo msm"</p></div>
+
+</div>
+</div>
+</section>
+
+<section class="container reveal">
+<h1>PRODUTOS</h1>
+
+<div class="grid">
+<div class="card reveal"><h2>Streaming</h2><p>Netflix, Prime e outros com preço mínimo.</p></div>
+<div class="card reveal"><h2>Seguidores</h2><p>Cresça rápido em qualquer rede social.</p></div>
+<div class="card reveal"><h2>Nitro & Métodos</h2><p>Serviços exclusivos com melhor preço.</p></div>
+</div>
+
+<a class="btn" href="https://discord.gg/ZONA7" target="_blank">ENTRAR NO DISCORD</a>
+</section>
+
+<section class="container reveal">
+<h1>HISTÓRICO DE COMPRAS</h1>
+<div id="history" class="sales"></div>
+</section>
+
+<footer>© Zona 7</footer>
+
+<a href="https://discord.gg/ZONA7" class="floating-btn">ENTRAR</a>
+
+<script>
+function scrollSlow(){
+window.scrollBy({top:700,behavior:"smooth"});
+}
+
+function revealOnScroll(){
+const elements = document.querySelectorAll('.reveal');
+
+elements.forEach((el,index)=>{
+const windowHeight = window.innerHeight;
+const elementTop = el.getBoundingClientRect().top;
+
+if(elementTop < windowHeight - 30){
+setTimeout(()=>{
+el.classList.add('active');
+}, index * 15);
+}
+});
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+
+/* HISTÓRICO */
+const names = [
+"yurizxy.21","ana.cxsz","pedrin_777","rafael.xp",
+"Ana Souza","Lucas Lima","João Pedro","Maria Clara",
+"Gustavo Alves","Bruno Henrique","Pedro Costa","Felipe Rocha"
+];
+
+const products = [
+"Netflix Premium","Spotify Premium","Discord Nitro",
+"Streaming Pack","Engajamento Social","Ferramentas Digitais"
+];
+
+const historyContainer=document.getElementById('history');
+
+function addHistory(){
+const div=document.createElement('div');
+div.className='sale';
+
+div.innerHTML=`
+<span><strong>${names[Math.floor(Math.random()*names.length)]}</strong> comprou ${products[Math.floor(Math.random()*products.length)]}</span>
+<span>obrigado pela preferência</span>
+`;
+
+historyContainer.prepend(div);
+}
+
+for(let i=0;i<4;i++) addHistory();
+setInterval(addHistory,3000);
+</script>
+
+<!-- 🔥 SISTEMA DA LOGO (SÓ EDITA AQUI) -->
+<script>
+const CONFIG = {
+  logo: "logo.gif" // pode ser logo.png ou link
+};
+
+window.addEventListener("load", () => {
+  const logo = document.querySelector(".logo");
+  if (logo) logo.src = CONFIG.logo;
+});
+</script>
+
+</body>
+</html>
